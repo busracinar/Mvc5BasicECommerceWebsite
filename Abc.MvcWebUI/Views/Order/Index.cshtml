@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Abc.MvcWebUI.Models.AdminOrderModel>
+@{ 
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+    <div class="container pb-5 mt-5">
+        <h2>Siparişler</h2>
+        <hr />
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Sipariş ID</th>
+                    <th>Sipariş Numarası</th>
+                    <th>Sipariş Tarihi</th>
+                    <th>Sipariş Durumu</th>
+                    <th>Ürün Sayısı</th>
+                    <th>Toplam Tutar</th>
+                    <th width="135"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td>@item.ID</td>
+                    <td>@item.OrderNumber</td>
+                    <td>@item.OrderDate</td>
+                    <td>@item.OrderState</td>
+                    <td>@item.Count</td>
+                    <td>@item.Total</td>
+                    <td>
+                        @Html.ActionLink("Sipariş Detayı","Details", new { id=@item.ID}, new { @class="btn btn-primary btn-sm"})
+                    </td>
+                </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+
